@@ -1,17 +1,11 @@
-import { useEffect } from "react";
-import { setFocus, ROOT_FOCUS_KEY } from "@noriginmedia/norigin-spatial-navigation";
 import { Button } from "./app/components/button";
 import { Row } from "./app/components/row";
 
 function App() {
 
-  useEffect(() => {
-    setFocus(ROOT_FOCUS_KEY);
-  }, []);
-
   return (
     <div>
-      <Row title="Trending">
+      <Row title="Trending" defaultFocus>
         <Button label="Movie 1" onSelect={() => alert("Movie 1")} />
         <Button label="Movie 2" onSelect={() => alert("Movie 2")} />
         <Button label="Movie 3" onSelect={() => alert("Movie 3")} />
