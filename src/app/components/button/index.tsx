@@ -3,11 +3,13 @@ import styles from "./styles.module.scss";
 
 export interface ButtonProps {
   label: string;
+  focusKey: string;
   onSelect?: () => void;
 }
 
-export function Button({ label, onSelect }: ButtonProps) {
+export function Button({ label, focusKey, onSelect }: ButtonProps) {
   const { ref, focused, focusSelf } = useFocusable({
+    focusKey,
     onEnterPress: () => onSelect?.(),
   });
 

@@ -7,10 +7,13 @@ interface RowProps {
   title: string;
   children: ReactNode;
   defaultFocus?: boolean;
+  preferredChildFocusKey?: string;
 }
 
-export function Row({ title, children, defaultFocus }: RowProps) {
-  const { ref, focusKey, focusSelf } = useFocusable();
+export function Row({ title, children, defaultFocus, preferredChildFocusKey }: RowProps) {
+  const { ref, focusKey, focusSelf } = useFocusable({
+    preferredChildFocusKey,
+  });
 
   useEffect(() => {
     if (defaultFocus) {
