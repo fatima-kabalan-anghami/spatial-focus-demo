@@ -1,7 +1,13 @@
+import type { ReactNode } from "react";
 import { useFocusable, FocusContext } from "@noriginmedia/norigin-spatial-navigation";
 import styles from "./styles.module.scss";
 
-export function Row({ title, children }: any) {
+interface RowProps {
+  title: string;
+  children: ReactNode;
+}
+
+export function Row({ title, children }: RowProps) {
   const { ref, focusKey } = useFocusable();
 
   return (

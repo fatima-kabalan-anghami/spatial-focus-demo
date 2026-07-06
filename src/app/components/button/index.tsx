@@ -1,19 +1,15 @@
 import { useFocusable } from "@noriginmedia/norigin-spatial-navigation";
 import styles from "./styles.module.scss";
-import { useEffect } from "react";
 
 export interface ButtonProps {
   label: string;
+  onSelect?: () => void;
 }
 
-export function Button({ label }: ButtonProps) {
-  const { ref, focused, focusSelf } = useFocusable();
-
-  useEffect(() => {
-    focusSelf();
-  }, []);
-
-  console.log("focused", focused);
+export function Button({ label, onSelect }: ButtonProps) {
+  const { ref, focused, focusSelf } = useFocusable({
+    onEnterPress: () => onSelect?.(),
+  });
 
   return (
     <div
