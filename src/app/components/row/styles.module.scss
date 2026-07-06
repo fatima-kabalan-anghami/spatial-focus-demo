@@ -1,5 +1,10 @@
 .row {
   margin-bottom: 40px;
+  transition: opacity 0.2s ease;
+}
+
+.inactive {
+  opacity: 0.4;
 }
 
 .title {

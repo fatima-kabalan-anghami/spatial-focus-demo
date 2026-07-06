@@ -11,8 +11,9 @@ interface RowProps {
 }
 
 export function Row({ title, children, defaultFocus, preferredChildFocusKey }: RowProps) {
-  const { ref, focusKey, focusSelf } = useFocusable({
+  const { ref, focusKey, focusSelf, hasFocusedChild } = useFocusable({
     preferredChildFocusKey,
+    trackChildren: true,
   });
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export function Row({ title, children, defaultFocus, preferredChildFocusKey }: R
 
   return (
     <FocusContext.Provider value={focusKey}>
-      <div className={styles.row} ref={ref}>
+      <div className={`${styles.row} ${!hasFocusedChild ? styles.inactive : ""}`} ref={ref}>
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.items}>
           {children}
